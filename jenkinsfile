@@ -2,4 +2,16 @@ node {
           stage('Build'){
                         sh "echo Hello Jenkinsfile!!!"
           }
+		  stage('deploy'){
+						def server = Artifactory.server 'jfrog'
+                        def uploadSpec = """{
+  "files": [
+    {
+      "pattern": "bazinga/*froggy*.zip",
+      "target": "bazinga-repo/froggy-files/"
+    }
+ ]
+}"""
+server.upload(uploadSpec)
+		  {
 }
