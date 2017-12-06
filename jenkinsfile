@@ -7,7 +7,7 @@ node {
                         def uploadSpec = """{
   "files": [
     {
-      "pattern": "bazinga/*froggy*.zip",
+      "pattern": "*froggy*.zip",
       "target": "bazinga-repo/froggy-files/"
     }
  ]
