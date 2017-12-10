@@ -3,6 +3,7 @@ node {
                         sh "echo Hello Jenkinsfile!!!"
           }
 		  stage('deploy'){
+						mvn clean install
 						def server = Artifactory.server 'jfrog'
                         def uploadSpec = """{
   "files": [
