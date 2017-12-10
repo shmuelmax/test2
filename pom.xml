@@ -1,31 +1,27 @@
-<plugin>
-            <!-- Using the eclipse compiler allows for different source and target, 
-                which is a good thing (outweighing that this is a rarely used combination, 
-                and most people use javac) This should also allow us to run maven builds 
-                on a JRE and not a JDK. -->
 
-            <!-- Note that initial experiments with an earlier version of maven-compiler-plugin 
-                showed that the eclipse compiler bundled with that gave incorrect lines in 
-                the debug information. By using a newer version of the plexus-compiler-eclipse 
-                plugin this is hopefully less of an issue. If not we must also bundle a newer 
-                version of the eclipse compiler itself. -->
+<project xmlns = "http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.companyname.projectgroup</groupId>
+   <artifactId>project</artifactId>
+   <version>1.1</version>
+   
+   <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.0</version>
-            <configuration>
-                <source>1.6</source>
-                <target>1.5</target>
-                <debug>true</debug>
-                <optimize>false</optimize>
-                <fork>true</fork>
-                <compilerId>eclipse</compilerId>
-            </configuration>
-            <dependencies>
-                <dependency>
-                    <groupId>org.codehaus.plexus</groupId>
-                    <artifactId>plexus-compiler-eclipse</artifactId>
-                    <version>2.1</version>
-                </dependency>
-            </dependencies>
-        </plugin>
+        <maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <build.number />
+
+        <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+
+        <jansi.version>1.12</jansi.version>
+    </properties>
+
+  
+</project>
