@@ -1,5 +1,4 @@
-pipeline {
- node("jenkins_slave")
+pipeline 
  {
     agent any
     tools { 
@@ -23,5 +22,5 @@ pipeline {
             }
         }
     }
- }
+
 }
