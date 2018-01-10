@@ -1,6 +1,6 @@
 pipeline 
  {
-    agent jenkins_slave
+    agent {'jenkins_slave'}
     tools { 
         maven 'mvn' 
         jdk 'jdk' 
