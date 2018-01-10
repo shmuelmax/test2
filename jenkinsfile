@@ -1,15 +1,14 @@
 pipeline 
  {
-    agent {'jenkins_slave'}
+    agent {
+		label 'jenkins_slave'
+	}
     tools { 
         maven 'mvn' 
         jdk 'jdk' 
     }
     stages {
         stage ('Initialize') {
-			agent{
-				label 'jenkins_slave'
-			}
 					steps {
 						sh '''
 							echo "PATH = ${PATH}"
