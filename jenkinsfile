@@ -1,19 +1,20 @@
-node("jenkins_slave")
-{
 pipeline 
  {
-    agent any
+    agent jenkins_slave
     tools { 
         maven 'mvn' 
         jdk 'jdk' 
     }
     stages {
         stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                ''' 
+			agent{
+				label 'jenkins_slave'
+			}
+					steps {
+						sh '''
+							echo "PATH = ${PATH}"
+							echo "M2_HOME = ${M2_HOME}"
+						''' 
             }
         }
 
@@ -25,5 +26,4 @@ pipeline
         }
     }
 
- }
 } 
