@@ -1,4 +1,6 @@
 pipeline {
+ node("jenkins_slave")
+ {
     agent any
     tools { 
         maven 'mvn' 
@@ -21,4 +23,5 @@ pipeline {
             }
         }
     }
+ }
 }
