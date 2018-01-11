@@ -1,18 +1,28 @@
-node {
-          stage('Build'){
-                        sh "echo Hello Jenkinsfile!!!"
-          }
-		  stage('deploy'){
-						mvn clean install
-						def server = Artifactory.server 'jfrog'
-                        def uploadSpec = """{
-  "files": [
-    {
-      "pattern": "/*froggy*.zip",
-      "target": "bazinga-repo/froggy-files/"
-    }
- ]
-}"""
-server.upload(uploadSpec)
-	                     }
+pipeline 
+ {
+    agent {
+		label 'jenkins_slave'
 	}
+    tools { 
+        maven 'mvn' 
+        jdk 'jdk' 
+    }
+    stages {
+        stage ('Initialize') {
+					steps {
+						sh '''
+							echo "PATH = ${PATH}"
+							echo "M2_HOME = ${M2_HOME}"
+						''' 
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
+				sh "mvn clean install"
+            }
+        }
+    }
+
+} 
