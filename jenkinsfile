@@ -11,6 +11,7 @@ node ('jenkins_slave')
 		{	
 			rtMaven.resolver server: artirepo, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
 			rtMaven.deployer server: artideploy, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
+			rtMaven.deployer.deployArtifacts = false
 		
 		}
 	
@@ -18,6 +19,7 @@ node ('jenkins_slave')
 		stage('Build')
 		{ 
 			buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+			
 		}
 	
 	
