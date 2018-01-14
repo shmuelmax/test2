@@ -23,11 +23,7 @@ node ('jenkins_slave')
 		}
 	
 	
-		stage('deploy')
-		{
-			rtMaven.deployer.deployArtifacts buildInfo
-			
-		}
+		
 		
 		stage('deployToArtifactory')
 		{
