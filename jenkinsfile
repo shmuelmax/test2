@@ -1,18 +1,11 @@
-pipeline
-{
-	agent
-	{
-		label 'jenkins_slave'
-	}
-	
+node ('agent_slave')
+{	
 	
 	def artideploy = Artifactory.newServer url: 'localhost:8081', username: 'admin', password: 'admin'
 	def artirepo = Artifactory.newServer url: 'http://artifactory.dev.securegion.com/artifactory', username: 'shmuelm', password: 'Aa123456'
 	def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo
 	
-	stages
-	{
 		stage('artifactory_configuration')
 		{	
 			rtMaven.resolver server: artirepo, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
@@ -32,5 +25,5 @@ pipeline
 			rtMaven.publishBuildInfo buildInfo
 	
 		}
-	}
+	
 }
