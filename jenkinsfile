@@ -5,6 +5,7 @@ node ('jenkins_slave')
 	def artirepo = Artifactory.newServer url: 'http://artifactory.dev.securegion.com/artifactory', username: 'shmuelm', password: 'Aa123456'
 	def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo
+	rtMaven.tool = 'mvn'
 	
 		stage('artifactory_configuration')
 		{	
