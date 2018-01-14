@@ -1,4 +1,4 @@
-node
+pipeline
 {
 	agent
 	{
@@ -11,24 +11,26 @@ node
 	def rtMaven = Artifactory.newMavenBuild()
 	def buildInfo
 	
-	
-	stage('artifactory_configuration')
-	{	
-		rtMaven.resolver server: artirepo, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
-		rtMaven.deployer server: artideploy, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
+	stages
+	{
+		stage('artifactory_configuration')
+		{	
+			rtMaven.resolver server: artirepo, releaseRepo: 'libs-release', snapshotRepo: 'libs-snapshot'
+			rtMaven.deployer server: artideploy, releaseRepo: 'libs-release-local', snapshotRepo: 'libs-snapshot-local'
 		
-	}
+		}
 	
 	
-    stage('Build')
-	{ 
-		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
-    }
+		stage('Build')
+		{ 
+			buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
+		}
 	
 	
-    stage('deployToArtifactory')
-    {
-		rtMaven.publishBuildInfo buildInfo
+		stage('deployToArtifactory')
+		{
+			rtMaven.publishBuildInfo buildInfo
 	
+		}
 	}
 }
