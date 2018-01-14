@@ -21,13 +21,11 @@ node ('jenkins_slave')
 			buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean install'
 			
 		}
-	
-	
 		
 		
 		stage('deployToArtifactory')
 		{
-			rtMaven.publishBuildInfo buildInfo
+			artideploy.publishBuildInfo buildInfo
 	
 		}
 	
