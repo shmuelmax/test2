@@ -31,7 +31,7 @@ node ('jenkins_slave')
 		
 		stage('deployToDev')
 		{
-		 sh "scp /workspace/github/project-1.1.jar mordechai@192.168.146.1:C:/jenkinsfile_deploy"
+		 sh "scp mordechai@192.168.146.1:/workspace/github/project-1.1.jar C:/jenkinsfile_deploy"
 		}
 	
 }
