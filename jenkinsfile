@@ -1,7 +1,8 @@
 pipeline {
-    agent { label 'jenkins_slave'
 	
     stages {
+	    agent { label 'jenkins_slave'
+
         stage('artifactory_configuration') {
             steps {
                 echo 'Hello World'
