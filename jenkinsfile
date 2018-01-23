@@ -1,4 +1,4 @@
-pipeline
+node
 {	
 	
 	def artideploy = Artifactory.newServer url: 'http://localhost:8081/artifactory', username: 'admin', password: 'admin'
@@ -34,4 +34,4 @@ pipeline
 		 sh "scp /workspace/github/target/project-1.1.jar mordechai@192.168.146.1:C:/jenkinsfile_deploy"
 		}
 	
-}
+} 
