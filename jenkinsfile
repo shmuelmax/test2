@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent { label{
+	
     stages {
         stage('artifactory_configuration') {
             steps {
@@ -18,7 +19,7 @@ pipeline {
 				artideploy.publishBuildInfo buildInfo
 				sh "scp /workspace/github/target/project-1.1.jar mordechai@192.168.146.1:C:/jenkinsfile_deploy"
 
-
+		}}
                 
                     }
 			
